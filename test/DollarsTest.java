@@ -1,5 +1,6 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import obj.Dollars;
 import org.junit.jupiter.api.Test;
 
 class 	DollarsTest {

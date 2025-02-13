@@ -1,3 +1,7 @@
+package site;
+
+import obj.Dollars;
+import obj.Reading;
 
 public class BusinessSite {
 
@@ -22,14 +26,14 @@ public class BusinessSite {
 		double t1 = START_RATE - ((END_RATE * END_AMOUNT) - START_RATE) / (END_AMOUNT - 1);
 		double t2 = ((END_RATE * END_AMOUNT) - START_RATE) * Math.min(END_AMOUNT, usage) / (END_AMOUNT - 1);
 		double t3 = Math.max(usage - END_AMOUNT, 0) * END_RATE;
-		result = new Dollars (t1 + t2 + t3);
-		result = result.plus(new Dollars (usage * 0.0175));
-		Dollars base = new Dollars (result.min(new Dollars (50)).times(0.07));
-		if (result.isGreaterThan(new Dollars (50))) {
-			base = new Dollars (base.plus(result.min(new Dollars(75)).minus(new Dollars(50)).times(0.06)));
+		result = new Dollars(t1 + t2 + t3);
+		result = result.plus(new Dollars(usage * 0.0175));
+		Dollars base = new Dollars(result.min(new Dollars(50)).times(0.07));
+		if (result.isGreaterThan(new Dollars(50))) {
+			base = new Dollars(base.plus(result.min(new Dollars(75)).minus(new Dollars(50)).times(0.06)));
 		}
-		if (result.isGreaterThan(new Dollars (75))) {
-			base = new Dollars (base.plus(result.minus(new Dollars(75)).times(0.05)));
+		if (result.isGreaterThan(new Dollars(75))) {
+			base = new Dollars(base.plus(result.minus(new Dollars(75)).times(0.05)));
 		}
 		result = result.plus(base);
 		return result;

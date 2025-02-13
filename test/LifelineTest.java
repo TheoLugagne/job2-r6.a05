@@ -1,9 +1,12 @@
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.Date;
 
+import obj.Reading;
+import obj.Zone;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import site.LifelineSite;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LifelineTest { 
 	
@@ -12,7 +15,7 @@ class LifelineTest {
 	@SuppressWarnings("deprecation")
 	@BeforeEach
 	public void setUp() {
-		new Zone ("A", 0.06, 0.07, new Date ("15 May 2023"), new Date ("10 Sep 2023")).register();
+		new Zone("A", 0.06, 0.07, new Date ("15 May 2023"), new Date ("10 Sep 2023")).register();
 		new Zone ("B", 0.07, 0.06, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
 		new Zone ("C", 0.065, 0.065, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
 		_subject = new LifelineSite();
@@ -21,7 +24,7 @@ class LifelineTest {
 	@SuppressWarnings("deprecation")
 	@Test
 	public void testZero() {
-		_subject.addReading(new Reading (10, new Date ("1 Jan 2023")));
+		_subject.addReading(new Reading(10, new Date ("1 Jan 2023")));
 		_subject.addReading(new Reading (10, new Date ("1 Feb 2023")));
 		assertEquals(0d, _subject.charge().amount());
 	}

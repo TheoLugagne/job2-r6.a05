@@ -1,3 +1,5 @@
+package obj;
+
 import java.util.Date;
 
 public class Reading {
