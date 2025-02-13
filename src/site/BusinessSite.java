@@ -6,7 +6,7 @@ import obj.Reading;
 public class BusinessSite {
 
 	private int _lastReading;
-	private Reading[] _readings = new Reading[1000];
+	private final Reading[] _readings = new Reading[1000];
 	private static final double START_RATE = 0.09;
 	private static final double END_RATE = 0.05;
 	private static final int END_AMOUNT = 1000;
