@@ -15,8 +15,8 @@ class BusinessTest {
 	@BeforeEach
 	public void setUp() {
 		new Zone("A", 0.06, 0.07, new Date ("15 May 2023"), new Date ("10 Sep 2023")).register();
-		new Zone ("B", 0.07, 0.06, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
-		new Zone ("C", 0.065, 0.065, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
+		new Zone("B", 0.07, 0.06, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
+		new Zone("C", 0.065, 0.065, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
 		_subject = new BusinessSite();
 	}
 
