@@ -41,12 +41,14 @@ public class DisabilitySite {
 		int usage = Math.min(fullUsage, CAP);
 		if (start.after(_zone.summerEnd()) || end.before(_zone.summerStart()))
 			summerFraction = 0;
-		else if (!start.before(_zone.summerStart()) && !start.after(_zone.summerEnd()) &&
-				!end.before(_zone.summerStart()) && !end.after(_zone.summerEnd()))
+		else if (start.after(_zone.summerStart()) && end.before(_zone.summerEnd()))
 			summerFraction = 1;
+//		else if (!start.before(_zone.summerStart()) && !start.after(_zone.summerEnd()) &&
+//				!end.before(_zone.summerStart()) && !end.after(_zone.summerEnd()))
+//			summerFraction = 1;
 		else {
 			double summerDays;
-			if (start.before(_zone.summerStart()) || start.after(_zone.summerEnd())) {
+			if (start.before(_zone.summerStart())) { //|| start.after(_zone.summerEnd())) {
 				// end is in the summer
 				summerDays = dayOfYear(end) - dayOfYear (_zone.summerStart()) + 1;
 			} else {
