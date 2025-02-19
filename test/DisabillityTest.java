@@ -13,7 +13,7 @@ class DisabillityTest {
 
 	DisabilitySite _subject;
 	
-	@SuppressWarnings("deprecation")
+	
 	@BeforeEach
 	public void setUp() {
 		new Zone("A", 0.06, 0.07, new Date ("15 May 2023"), new Date ("10 Sep 2023")).register();
@@ -22,7 +22,7 @@ class DisabillityTest {
 		_subject = new DisabilitySite(Zone.get("A"));
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testZero() {
 		_subject.addReading(new Reading(10, new Date ("1 Jan 2023")));
@@ -30,7 +30,7 @@ class DisabillityTest {
 		assertEquals(0d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionIsEqualsTo1() {
 		_subject.addReading(new Reading (10, new Date ("16 May 2023")));
@@ -38,7 +38,7 @@ class DisabillityTest {
 		assertEquals(8.14d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@DisplayName("Présence d'un potentiel bug, ce cas est non traité par le code")
 	@Test
 	public void testSummerFractionIsEqualsTo1withPartOfWinter() {
@@ -47,7 +47,7 @@ class DisabillityTest {
 		assertEquals(8.23d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionIsEqualsTo0BeforeTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("1 Jan 2023")));
@@ -55,7 +55,7 @@ class DisabillityTest {
 		assertEquals(9.19d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionIsEqualsTo0AfterTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("1 Oct 2023")));
@@ -63,7 +63,7 @@ class DisabillityTest {
 		assertEquals(9.19d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionEndIsInTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("1 May 2023")));
@@ -71,7 +71,7 @@ class DisabillityTest {
 		assertEquals(8.25d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionStartIsInTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("16 May 2023")));
@@ -79,7 +79,7 @@ class DisabillityTest {
 		assertEquals(8.34d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	@DisplayName("Doit être inférieur que our les résidents, application de CAP à 200")
 	public void testSummerFractionStartIsInTheSummerWithUsageMoreThan200() {

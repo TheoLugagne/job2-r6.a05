@@ -21,7 +21,7 @@ class ResidentialTest {
 		_subject = new ResidentialSite(Zone.get("A"));
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testZero() {
 		_subject.addReading(new Reading(10, new Date ("1 Jan 2023")));
@@ -29,7 +29,7 @@ class ResidentialTest {
 		assertEquals(0d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionIsEqualsTo1() {
 		_subject.addReading(new Reading (10, new Date ("16 May 2023")));
@@ -37,7 +37,7 @@ class ResidentialTest {
 		assertEquals(8.14d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@DisplayName("Présence d'un potentiel bug, ce cas est non traité par le code")
 	@Test
 	public void testSummerFractionIsEqualsTo1withPartOfWinter() {
@@ -46,7 +46,7 @@ class ResidentialTest {
 		assertEquals(8.23d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionIsEqualsTo0BeforeTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("1 Jan 2023")));
@@ -54,7 +54,7 @@ class ResidentialTest {
 		assertEquals(9.19d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionIsEqualsTo0AfterTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("1 Oct 2023")));
@@ -62,7 +62,7 @@ class ResidentialTest {
 		assertEquals(9.19d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionEndIsInTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("1 May 2023")));
@@ -70,7 +70,7 @@ class ResidentialTest {
 		assertEquals(8.25d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionStartIsInTheSummer() {
 		_subject.addReading(new Reading (10, new Date ("16 May 2023")));
@@ -78,7 +78,7 @@ class ResidentialTest {
 		assertEquals(8.34d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testSummerFractionStartIsInTheSummerWithUsageMoreThan200() {
 		_subject.addReading(new Reading (10, new Date ("16 May 2023")));

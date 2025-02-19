@@ -1,13 +1,14 @@
 package obj;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 
 public class Zone {
 
 	private String _name;
-	private Date _summerEnd;
-	private Date _summerStart;
+	private LocalDate _summerEnd;
+	private LocalDate _summerStart;
 	private double _winterRate;
 	private double _summerRate;
 	
@@ -23,7 +24,7 @@ public class Zone {
 	}
 	
 	public Zone (String name, double summerRate, double winterRate,
-			Date summerStart, Date summerEnd) {
+				 LocalDate summerStart, LocalDate summerEnd) {
 		_name = name;
 		_summerRate = summerRate;
 		_winterRate = winterRate;
@@ -31,11 +32,11 @@ public class Zone {
 		_summerEnd = summerEnd;
 	}
 
-	public Date summerEnd() {
+	public LocalDate summerEnd() {
 		return _summerEnd;
 	}
 	
-	public Date summerStart() {
+	public LocalDate summerStart() {
 		return _summerStart;
 	}
 	

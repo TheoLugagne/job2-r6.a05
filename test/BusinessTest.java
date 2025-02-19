@@ -1,4 +1,7 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
+import java.util.Locale;
 
 import obj.Reading;
 import obj.Zone;
@@ -10,45 +13,49 @@ import static org.junit.jupiter.api.Assertions.*;
 class BusinessTest {
 
 	BusinessSite _subject;
+	DateTimeFormatter formatter;
 	
-	@SuppressWarnings("deprecation")
+	
 	@BeforeEach
 	public void setUp() {
-		new Zone("A", 0.06, 0.07, new Date ("15 May 2023"), new Date ("10 Sep 2023")).register();
-		new Zone("B", 0.07, 0.06, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
-		new Zone("C", 0.065, 0.065, new Date ("5 Jun 2023"), new Date ("31 Aug 2023")).register();
+		formatter = DateTimeFormatter.ofPattern("d MMM yyyy", Locale.ENGLISH);
+
+		new Zone("A", 0.06, 0.07,LocalDate.parse("15 May 2023", formatter), LocalDate.parse("10 Sep 2023", formatter)).register();
+		new Zone("B", 0.07, 0.06, LocalDate.parse("5 Jun 2023",formatter), LocalDate.parse ("31 Aug 2023",formatter)).register();
+		new Zone("C", 0.065, 0.065,LocalDate.parse("5 Jun 2023",formatter), LocalDate.parse ("31 Aug 2023",formatter)).register();
 		_subject = new BusinessSite();
 	}
 
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testZero() {
-		_subject.addReading(new Reading(10, new Date ("1 Jan 2023")));
-		_subject.addReading(new Reading (10, new Date ("1 Feb 2023")));
+
+		_subject.addReading(new Reading(10, LocalDate.parse("1 Jan 2023",formatter)));
+		_subject.addReading(new Reading(10, LocalDate.parse("1 Feb 2023", formatter)));
 		assertEquals(0d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testChargeLessThan50Dollars() {
-		_subject.addReading(new Reading (10, new Date ("1 Jan 2023")));
-		_subject.addReading(new Reading (710, new Date ("1 Feb 2023")));
+		_subject.addReading(new Reading(10, LocalDate.parse("1 Jan 2023", formatter)));
+		_subject.addReading(new Reading(710, LocalDate.parse("1 Feb 2023", formatter)));
 		assertEquals(50.57d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testChargeBetween50And75Dollars() {
-		_subject.addReading(new Reading (10, new Date ("1 Jan 2023")));
-		_subject.addReading(new Reading (810, new Date ("1 Feb 2023")));
+		_subject.addReading(new Reading(10, LocalDate.parse("1 Jan 2023", formatter)));
+		_subject.addReading(new Reading(810, LocalDate.parse("1 Feb 2023", formatter)));
 		assertEquals(57.75d, _subject.charge().amount());
 	}
 	
-	@SuppressWarnings("deprecation")
+	
 	@Test
 	public void testChargeGreaterThan75Dollars() {
-		_subject.addReading(new Reading (10, new Date ("1 Jan 2023")));
-		_subject.addReading(new Reading (1210, new Date ("1 Feb 2023")));
+		_subject.addReading(new Reading(10, LocalDate.parse("1 Jan 2023", formatter)));
+		_subject.addReading(new Reading(1210, LocalDate.parse("1 Feb 2023", formatter)));
 		assertEquals(86.3d, _subject.charge().amount());
 	}
 	
