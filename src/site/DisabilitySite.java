@@ -15,18 +15,9 @@ public class DisabilitySite extends Site{
 		_zone = zone;
 	}
 
-	
-	public Dollars charge() {
-		int i;
-		for (i = 0; _readings[i] != null; i++);
-		int usage = _readings[i-1].amount() - _readings[i-2].amount();
-		LocalDate end = _readings[i-1].date();
-		LocalDate start = _readings[i-2].date();
-		start = start.plusDays(1);//set to begining of period
-		return charge(usage, start, end);
-	}
 
-	private Dollars charge(int fullUsage, LocalDate start, LocalDate end) {
+	@Override
+	protected Dollars charge(int fullUsage, LocalDate start, LocalDate end) {
 		Dollars result;
 		double summerFraction;
 		int usage = Math.min(fullUsage, CAP);
@@ -34,9 +25,6 @@ public class DisabilitySite extends Site{
 			summerFraction = 0;
 		else if (start.isAfter(_zone.summerStart()) && end.isBefore(_zone.summerEnd()))
 			summerFraction = 1;
-//		else if (!start.isBefore(_zone.summerStart()) && !start.isAfter(_zone.summerEnd()) &&
-//				!end.isBefore(_zone.summerStart()) && !end.isAfter(_zone.summerEnd()))
-//			summerFraction = 1;
 		else {
 			double summerDays;
 			if (start.isBefore(_zone.summerStart())) { //|| start.isAfter(_zone.summerEnd())) {
