@@ -16,6 +16,6 @@ public class Site {
     }
 
     public int firstUnsuedReadingIndex(){
-        return _readings.
+        return _readings.length-1;
     }
 }

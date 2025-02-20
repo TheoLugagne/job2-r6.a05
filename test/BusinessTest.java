@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.Locale;
 
 import obj.Reading;
@@ -64,6 +63,6 @@ class BusinessTest {
 		try {
 			_subject.charge();
 			assert(false);
-		} catch (NullPointerException e) {}
+		} catch (NullPointerException ignored) {}
 	}
 }

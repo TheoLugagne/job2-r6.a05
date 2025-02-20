@@ -1,12 +1,8 @@
 package site;
 
 import obj.Dollars;
-import obj.Reading;
 import obj.Zone;
-
 import java.time.LocalDate;
-import java.time.Month;
-import java.util.Date;
 
 public class ResidentialSite extends Site {
 
@@ -20,7 +16,7 @@ public class ResidentialSite extends Site {
 
 
 
-	
+
 	public Dollars charge() {
 		// find last reading
 		int i = 0;
@@ -49,12 +45,12 @@ public class ResidentialSite extends Site {
 			double summerDays;
 			if (start.isBefore(_zone.summerStart())) { // || start.isAfter(_zone.summerEnd())) {
 				// end is in the summer
-				summerDays = dayOfYear(end) - dayOfYear (_zone.summerStart()) + 1;
+				summerDays = end.getDayOfYear() - _zone.summerStart().getDayOfYear() + 1;
 			} else {
 				// start is in summer
-				summerDays = dayOfYear(_zone.summerEnd()) - dayOfYear (start) + 1;
+				summerDays = _zone.summerEnd().getDayOfYear() - start.getDayOfYear() + 1;
 			};
-			summerFraction = summerDays / (dayOfYear(end) - dayOfYear(start) + 1);
+			summerFraction = summerDays / (end.getDayOfYear() - start.getDayOfYear() + 1);
 		};
 
 		result = new Dollars((usage * _zone.summerRate() * summerFraction) +

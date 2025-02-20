@@ -1,12 +1,8 @@
 package site;
 
 import obj.Dollars;
-import obj.Reading;
 import obj.Zone;
-
 import java.time.LocalDate;
-import java.time.temporal.TemporalAmount;
-import java.util.Date;
 
 public class DisabilitySite extends Site{
 
@@ -26,7 +22,7 @@ public class DisabilitySite extends Site{
 		int usage = _readings[i-1].amount() - _readings[i-2].amount();
 		LocalDate end = _readings[i-1].date();
 		LocalDate start = _readings[i-2].date();
-		start.plusDays(1);//set to begining of period
+		start = start.plusDays(1);//set to begining of period
 		return charge(usage, start, end);
 	}
 

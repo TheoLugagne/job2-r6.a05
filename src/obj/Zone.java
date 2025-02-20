@@ -1,7 +1,6 @@
 package obj;
 
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashMap;
 
 public class Zone {
@@ -11,18 +10,18 @@ public class Zone {
 	private LocalDate _summerStart;
 	private double _winterRate;
 	private double _summerRate;
-	
+
 	private static HashMap<String, Zone> Registry = new HashMap<String, Zone>();
 
 	public Zone register() {
 		Registry.put(_name, this);
 		return this;
 	}
-	
+
 	public static Zone get (String name) {
 		return Registry.get(name);
 	}
-	
+
 	public Zone (String name, double summerRate, double winterRate,
 				 LocalDate summerStart, LocalDate summerEnd) {
 		_name = name;
@@ -35,15 +34,15 @@ public class Zone {
 	public LocalDate summerEnd() {
 		return _summerEnd;
 	}
-	
+
 	public LocalDate summerStart() {
 		return _summerStart;
 	}
-	
+
 	public double winterRate() {
 		return _winterRate;
 	}
-	
+
 	public double summerRate() {
 		return _summerRate;
 	}
