@@ -10,12 +10,12 @@ public class Site {
 
     public void addReading(Reading newReading) {
         // add reading to end of array
-        int i = 0;
-        while (_readings[i] != null) i++;
-        _readings[i] = newReading;
+        _readings[firstUnsuedReadingIndex()] = newReading;
     }
 
     public int firstUnsuedReadingIndex(){
-        return _readings.length-1;
+        int i = 0;
+        while (_readings[i] != null) i++;
+        return i;
     }
 }
